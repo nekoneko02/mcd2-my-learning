@@ -45,6 +45,6 @@ jobs:
         mvn clean deploy -DmuleDeploy \
          -Denvironment="Sandbox" \
          -Dtarget.env="dev" \
-         -Danypoint.psname="Cloudhub-US-East-1"  \
+         -Danypoint.psname="Cloudhub-US-East-2"  \
          -Dconnected.app.id="$APPID" \
          -Dconnected.app.secret="$APPSECRET"

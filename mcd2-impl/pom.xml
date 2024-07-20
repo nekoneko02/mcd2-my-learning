@@ -7,10 +7,8 @@
     <packaging>mule-application</packaging>
     <name>mcd2-impl</name>
     <properties>
-        <mule.app>
-            <var>1.0.0-SNAPSHOT</var>
-            <name>mcd2</name>
-        </mule.app>
+        <mule.app.var>1.0.0-SNAPSHOT</mule.app.var>
+        <mule.app.name>mcd2</mule.app.name>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <mule.maven.plugin.version>4.0.0</mule.maven.plugin.version>

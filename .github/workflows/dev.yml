@@ -31,10 +31,7 @@ jobs:
         repositories: '[{ "id": "anypoint-exchange-v3", "url": "https://maven.anypoint.mulesoft.com/api/v3/maven" }]'
         servers: '[{ "id": "anypoint-exchange-v3", "username": "~~~Client~~~", "password": "${env.APPID}~?~${env.APPSECRET}" }]'
     - name: Deploy to Exchange
-      run: |
-        artifactName=$(ls target/*.jar | head -1)
-        mvn clean mule:deploy \
-         -Dmule.artifact=$artifactName
+      run:  mvn clean deploy
     - name: Upload artifact 
       uses: actions/upload-artifact@master
       with:

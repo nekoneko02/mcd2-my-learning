@@ -27,11 +27,21 @@ jobs:
       with:
         repositories: '[{ "id": "anypoint-exchange-v3", "url": "https://maven.anypoint.mulesoft.com/api/v3/maven" }]'
         servers: '[{ "id": "anypoint-exchange-v3", "username": "~~~Client~~~", "password": "${env.APPID}~?~${env.APPSECRET}" }]'
+    - name: Package jar
+      working-directory: ./mcd2-impl
+      run: |
+        mvn clean package
+    - name: Upload artifact 
+      uses: actions/upload-artifact@master
+      with:
+        name: artifacts
+        path: target/*.jar      
     - name: Deploy to Exchange
       working-directory: ./mcd2-impl
       run: |
         artifactName=$(ls *.jar | head -1)
-        mvn clean deploy
+        mvn clean mule:deploy \
+         -Dmule.artifact=$artifactName
 
   deploy:
     needs: exchangedep
@@ -39,10 +49,15 @@ jobs:
     steps:
     - name: Checkout this repo
       uses: actions/checkout@v3
+    - uses: actions/download-artifact@master
+      with:
+        name: artifacts
     - name: Deploy to Sandbox
       working-directory: ./mcd2-impl
       run: |
-        mvn clean deploy -DmuleDeploy \
+        artifactName=$(ls *.jar | head -1)
+        mvn clean mule:deploy -DmuleDeploy \
+         -Dmule.artifact=$artifactName \
          -Denvironment="Sandbox" \
          -Dtarget.env="dev" \
          -Danypoint.psname="Cloudhub-US-East-2"  \

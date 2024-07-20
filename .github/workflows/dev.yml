@@ -43,8 +43,8 @@ jobs:
       working-directory: ./mcd2-impl
       run: |
         mvn clean deploy -DmuleDeploy \
-         -Denvironment="" \
-         -Dtarget.env="Sandbox" \
+         -Denvironment="Sandbox" \
+         -Dtarget.env="dev" \
          -Danypoint.psname="Cloudhub-US-East-1"  \
          -Dconnected.app.id="$APPID" \
          -Dconnected.app.secret="$APPSECRET"

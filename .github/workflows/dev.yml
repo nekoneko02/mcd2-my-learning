@@ -33,6 +33,10 @@ jobs:
     - name: Package jar
       run: |
         mvn clean package
+    - name: check target
+      run: |
+        ls
+        ls target/
     - name: Upload artifact 
       uses: actions/upload-artifact@master
       with:

@@ -78,13 +78,13 @@
         </pluginRepository>
     </pluginRepositories>
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>286c7880-a086-4088-89f8-68bfd23e5287</groupId>
             <artifactId>mcd2-api</artifactId>
             <version>1.0.0</version>
             <classifier>raml</classifier>
             <type>zip</type>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-apikit-module</artifactId>

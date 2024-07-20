@@ -1,0 +1,50 @@
+name: Add to Exchange and Deploy to Sandbox
+
+on:
+  push:
+    branches:
+      - Dev
+
+env:
+  APPID: ${{ secrets.mule_connected_app_sand_id }}
+  APPSECRET: ${{ secrets.mule_connected_app_sand_secret }}
+
+jobs:
+  exchangedep:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout this repo
+      uses: actions/checkout@v3
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - name: maven-settings-xml-action
+      uses: whelk-io/maven-settings-xml-action@v20
+      with:
+        repositories: '[{ "id": "anypoint-exchange-v3", "url": "https://maven.anypoint.mulesoft.com/api/v3/maven" }]'
+        servers: '[{ "id": "anypoint-exchange-v3", "username": "~~~Client~~~", "password": "${env.APPID}~?~${env.APPSECRET}" }]'
+    - name: Deploy to Exchange
+      working-directory: ./＜ご自身の Project 名＞
+      run: |
+        artifactName=$(ls *.jar | head -1)
+        mvn clean deploy
+
+  deploy:
+    needs: exchangedep
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout this repo
+      uses: actions/checkout@v3
+    - name: Deploy to Sandbox
+      working-directory: ./mcd2-impl
+      run: |
+        mvn clean deploy -DmuleDeploy \
+         -Denvironment="" \
+         -Dtarget.env="Sandbox" \
+         -Danypoint.psname="Cloudhub-US-East-1"  \
+         -Dconnected.app.id="$APPID" \
+         -Dconnected.app.secret="$APPSECRET"

@@ -44,9 +44,11 @@ jobs:
     steps:
     - name: Checkout this repo
       uses: actions/checkout@v3
-    - uses: actions/download-artifact@master
+    - name: Download dependencies
+      uses: actions/download-artifact@master
       with:
         name: dependencies
+    - run: ls ~/.m2
     - name: Deploy to Sandbox
       working-directory: ./mcd2-impl
       run: |

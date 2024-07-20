@@ -35,8 +35,8 @@ jobs:
     - name: Upload artifact 
       uses: actions/upload-artifact@master
       with:
-        name: artifacts
-        path: mcd2-impl/target/*.jar      
+        name: dependencies
+        path: ~/.m2     
    
   deploy:
     needs: exchangedep
@@ -46,7 +46,7 @@ jobs:
       uses: actions/checkout@v3
     - uses: actions/download-artifact@master
       with:
-        name: artifacts
+        name: dependencies
     - name: Deploy to Sandbox
       working-directory: ./mcd2-impl
       run: |

@@ -28,7 +28,7 @@ jobs:
         repositories: '[{ "id": "anypoint-exchange-v3", "url": "https://maven.anypoint.mulesoft.com/api/v3/maven" }]'
         servers: '[{ "id": "anypoint-exchange-v3", "username": "~~~Client~~~", "password": "${env.APPID}~?~${env.APPSECRET}" }]'
     - name: Deploy to Exchange
-      working-directory: ./＜ご自身の Project 名＞
+      working-directory: ./mcd2-impl
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn clean deploy

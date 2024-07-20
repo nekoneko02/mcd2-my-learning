@@ -12,6 +12,9 @@ env:
 jobs:
   exchangedep:
     runs-on: ubuntu-latest
+    defaults: 
+      run:
+        working-directory: ./mcd2-impl
     steps:
     - name: Checkout this repo
       uses: actions/checkout@v3
@@ -28,7 +31,6 @@ jobs:
         repositories: '[{ "id": "anypoint-exchange-v3", "url": "https://maven.anypoint.mulesoft.com/api/v3/maven" }]'
         servers: '[{ "id": "anypoint-exchange-v3", "username": "~~~Client~~~", "password": "${env.APPID}~?~${env.APPSECRET}" }]'
     - name: Package jar
-      working-directory: ./mcd2-impl
       run: |
         mvn clean package
     - name: Upload artifact 
@@ -37,7 +39,6 @@ jobs:
         name: artifacts
         path: target/*.jar      
     - name: Deploy to Exchange
-      working-directory: ./mcd2-impl
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn clean mule:deploy \
@@ -46,6 +47,9 @@ jobs:
   deploy:
     needs: exchangedep
     runs-on: ubuntu-latest
+    defaults: 
+      run:
+        working-directory: ./mcd2-impl
     steps:
     - name: Checkout this repo
       uses: actions/checkout@v3
@@ -53,7 +57,6 @@ jobs:
       with:
         name: artifacts
     - name: Deploy to Sandbox
-      working-directory: ./mcd2-impl
       run: |
         artifactName=$(ls *.jar | head -1)
         mvn clean mule:deploy -DmuleDeploy \

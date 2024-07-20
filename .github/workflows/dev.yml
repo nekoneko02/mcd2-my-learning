@@ -3,7 +3,7 @@ name: Add to Exchange and Deploy to Sandbox
 on:
   push:
     branches:
-      - Dev
+      - dev
 
 env:
   APPID: ${{ secrets.mule_connected_app_sand_id }}

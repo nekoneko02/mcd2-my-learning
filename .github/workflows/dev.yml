@@ -32,23 +32,17 @@ jobs:
         servers: '[{ "id": "anypoint-exchange-v3", "username": "~~~Client~~~", "password": "${env.APPID}~?~${env.APPSECRET}" }]'
     - name: Deploy to Exchange
       run:  mvn clean deploy
-    - name: Upload artifact 
-      uses: actions/upload-artifact@master
-      with:
-        name: dependencies
-        path: ~/.m2     
-   
   deploy:
     needs: exchangedep
     runs-on: ubuntu-latest
     steps:
     - name: Checkout this repo
       uses: actions/checkout@v3
-    - name: Download dependencies
-      uses: actions/download-artifact@master
+    - name: maven-settings-xml-action
+      uses: whelk-io/maven-settings-xml-action@v20
       with:
-        name: dependencies
-    - run: ls ~/.m2
+        repositories: '[{ "id": "anypoint-exchange-v3", "url": "https://maven.anypoint.mulesoft.com/api/v3/maven" }]'
+        servers: '[{ "id": "anypoint-exchange-v3", "username": "~~~Client~~~", "password": "${env.APPID}~?~${env.APPSECRET}" }]'
     - name: Deploy to Sandbox
       working-directory: ./mcd2-impl
       run: |

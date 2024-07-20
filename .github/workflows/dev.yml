@@ -33,18 +33,14 @@ jobs:
     - name: Package jar
       run: |
         mvn clean package
-    - name: check target
-      run: |
-        ls
-        ls target/
     - name: Upload artifact 
       uses: actions/upload-artifact@master
       with:
         name: artifacts
-        path: target/*.jar      
+        path: mcd2-impl/target/*.jar      
     - name: Deploy to Exchange
       run: |
-        artifactName=$(ls *.jar | head -1)
+        artifactName=$(ls target/*.jar | head -1)
         mvn clean mule:deploy \
          -Dmule.artifact=$artifactName
 

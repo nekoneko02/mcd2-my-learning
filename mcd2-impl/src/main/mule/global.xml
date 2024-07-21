@@ -6,4 +6,8 @@
   file="dev.secure.yaml" key="${crypt.password}" >
       <secure-properties:encrypt algorithm="Blowfish" />
 </secure-properties:config>
+<configuration-properties
+    file="config.yaml"
+    doc:name="Configuration properties"
+    doc:id="872422be-3571-4a52-a383-a2b0e16859d7" />
 </mule>

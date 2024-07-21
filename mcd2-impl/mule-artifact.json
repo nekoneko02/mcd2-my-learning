@@ -2,5 +2,8 @@
     "minMuleVersion": "4.7.0",
     "javaSpecificationVersions": [
       "17"
+    ],
+    "secureProperties": [
+      "crypt-password"
     ]
 }

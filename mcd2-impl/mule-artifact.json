@@ -4,6 +4,6 @@
       "17"
     ],
     "secureProperties": [
-      "crypt-password"
+      "crypt.password"
     ]
 }

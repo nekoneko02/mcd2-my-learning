@@ -46,6 +46,9 @@
                             <target.env>${target.env}</target.env>
                             <muleAppVer>${mule.app.ver}</muleAppVer>
                         </properties>
+                        <secureProperties>
+                            <crypt.password/>
+                        </secureProperties>
                     </cloudhub2Deployment>
                     <classifier>mule-application</classifier>
                 </configuration>

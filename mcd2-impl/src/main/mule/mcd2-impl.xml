@@ -3,7 +3,7 @@
     <http:listener-config name="mcd2-api-httpListenerConfig">
         <http:listener-connection host="0.0.0.0" port="8081" />
     </http:listener-config>
-    <apikit:config name="mcd2-api-config" api="resource::286c7880-a086-4088-89f8-68bfd23e5287:mcd2-api:1.0.0:raml:zip:mcd2-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+    <apikit:config name="mcd2-api-config" api="resource::286c7880-a086-4088-89f8-68bfd23e5287:mcd2-api:1.0.1:raml:zip:mcd2-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
     <flow name="mcd2-api-main">
         <http:listener config-ref="mcd2-api-httpListenerConfig" path="/api/*">
             <http:response statusCode="#[vars.httpStatus default 200]">
@@ -128,5 +128,6 @@ output application/json
     </flow>
     <flow name="get:\api\secure:mcd2-api-config">
         <logger level="INFO" message="get:\api:mcd2-api-config" />
+        <flow-ref  name="get-api-secure"/>
     </flow>
 </mule>

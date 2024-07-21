@@ -1,2 +1,2 @@
-encrypt:
-  password: ${encrypt.password}
+crypt:
+  password: ${crypt.password}

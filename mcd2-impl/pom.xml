@@ -79,13 +79,6 @@
     </pluginRepositories>
     <dependencies>
         <dependency>
-            <groupId>286c7880-a086-4088-89f8-68bfd23e5287</groupId>
-            <artifactId>mcd2-api</artifactId>
-            <version>1.0.0</version>
-            <classifier>raml</classifier>
-            <type>zip</type>
-        </dependency>
-        <dependency>
             <groupId>org.mule.modules</groupId>
             <artifactId>mule-apikit-module</artifactId>
             <version>1.10.4</version>
@@ -95,6 +88,19 @@
             <groupId>org.mule.connectors</groupId>
             <artifactId>mule-http-connector</artifactId>
             <version>1.9.2</version>
+            <classifier>mule-plugin</classifier>
+        </dependency>
+        <dependency>
+            <groupId>286c7880-a086-4088-89f8-68bfd23e5287</groupId>
+            <artifactId>mcd2-api</artifactId>
+            <version>1.0.1</version>
+            <classifier>raml</classifier>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>com.mulesoft.modules</groupId>
+            <artifactId>mule-secure-configuration-property-module</artifactId>
+            <version>1.2.7</version>
             <classifier>mule-plugin</classifier>
         </dependency>
     </dependencies>

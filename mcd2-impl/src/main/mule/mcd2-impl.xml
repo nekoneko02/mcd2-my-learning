@@ -126,4 +126,7 @@ output application/json
     <flow name="get:\api:mcd2-api-config">
         <logger level="INFO" message="get:\api:mcd2-api-config" />
     </flow>
+    <flow name="get:\api\secure:mcd2-api-config">
+        <logger level="INFO" message="get:\api:mcd2-api-config" />
+    </flow>
 </mule>

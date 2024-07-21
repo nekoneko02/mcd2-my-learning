@@ -47,7 +47,7 @@
                             <muleAppVer>${mule.app.ver}</muleAppVer>
                         </properties>
                         <secureProperties>
-                            <crypt.password/>
+                            <crypt.password>aaa</crypt.password>
                         </secureProperties>
                     </cloudhub2Deployment>
                     <classifier>mule-application</classifier>

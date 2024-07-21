@@ -1,2 +1,2 @@
 crypt:
-  password: ${crypt.password}
+  password: "dummy"

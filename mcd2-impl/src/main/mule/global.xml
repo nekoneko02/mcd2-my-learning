@@ -1,13 +1,14 @@
 <mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:secure-properties="http://www.mulesoft.org/schema/mule/secure-properties" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd     http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
 	http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd">
-  <secure-properties:config name="Secure_Properties_Config"
-  doc:name="Secure Properties Config" doc:id="acegik"
-  file="dev.secure.yaml" key="${crypt.password}" >
-      <secure-properties:encrypt algorithm="Blowfish" />
-</secure-properties:config>
+  
 <configuration-properties
     file="config.yaml"
     doc:name="Configuration properties"
     doc:id="872422be-3571-4a52-a383-a2b0e16859d7" />
+<secure-properties:config name="Secure_Properties_Config"
+  doc:name="Secure Properties Config" doc:id="acegik"
+  file="dev.secure.yaml" key="${crypt.password}" >
+      <secure-properties:encrypt algorithm="Blowfish" />
+</secure-properties:config>
 </mule>

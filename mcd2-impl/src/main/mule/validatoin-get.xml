@@ -1,0 +1,4 @@
+<flow name="validation-customer">
+  <validation:all doc:name="All">
+    <validation:is-email doc:name="Is email" email="#[payload.customer.emailAddress]" message="invalid email address">
+      <error-mapping sourceType=
